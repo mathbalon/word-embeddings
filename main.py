@@ -1,5 +1,9 @@
 import sys
+import yaml
 
-data = "data/" + sys.argv[1]
+with open("data/" + sys.argv[1], "r") as file:
+    sentences = file.readlines()
 
-sentences = open(data, 'r').readlines()
+with open("settings.yml", "r") as file:
+    settings = yaml.load(file, Loader=yaml.FullLoader)
+    
