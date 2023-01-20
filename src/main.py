@@ -3,9 +3,8 @@ import yaml
 
 from create_neural_network_model import create_neural_network_model, plot_results
 from create_one_hot_matrices import create_one_hot_matrices
-from create_unique_word_dict import create_unique_word_dict
 
-from create_word_data_points import create_word_data_points
+from word_data_points import create_word_data_points, create_unique_word_dict
 
 with open("data/" + sys.argv[1], "r") as file:
     text = file.readlines()
