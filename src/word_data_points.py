@@ -1,8 +1,12 @@
+import time
 
 from typing import Tuple
 from preprocessing import text_preprocessing
+from logger import logger
 
-def create_word_data_points(text:list, window:int) -> Tuple[list, list]:
+def create_word_data_points(text:list, window:int, logger_file_name:str) -> Tuple[list, list]:
+    st = time.time()
+
     word_pairs = []
     all_words = []
     
@@ -20,10 +24,16 @@ def create_word_data_points(text:list, window:int) -> Tuple[list, list]:
 
                 if i - w - 1 >= 0:
                     word_pairs.append([word] + [words[(i - w - 1)]])
+    
+    et = time.time()
+
+    logger(logger_file_name, "create_word_data_points", et-st)
 
     return word_pairs, all_words
 
-def create_unique_word_dict(words:list) -> dict:
+def create_unique_word_dict(words:list, logger_file_name:str) -> dict:
+    st = time.time()
+
     unique_words = sorted(list(set(words)))
 
     words_dict = {}
@@ -31,5 +41,9 @@ def create_unique_word_dict(words:list) -> dict:
         words_dict.update({
             word: i
         })
+
+    et = time.time()
+    
+    logger(logger_file_name, "create_unique_word_dict", et-st)
 
     return words_dict

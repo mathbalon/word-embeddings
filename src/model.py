@@ -1,7 +1,12 @@
+import time
+import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
-def create_neural_network_model(X, Y, settings):
+from logger import logger
+
+def create_neural_network_model(X:np.ndarray, Y:np.ndarray, settings:dict, logger_file_name:str):
+    st = time.time()
 
     input_layer = tf.keras.Input(shape=(X.shape[1],))
     hidden_layer = tf.keras.layers.Dense(units=settings["embed_size"], activation='linear')(input_layer)
@@ -17,9 +22,13 @@ def create_neural_network_model(X, Y, settings):
         epochs=settings["epochs"]
         )
 
+    et = time.time()
+    
+    logger(logger_file_name, "create_neural_network_model", et-st)
+
     return model.get_weights()[0]
 
-def plot_results(weights, unique_word_dict):
+def plot_results(weights, unique_word_dict:dict, logger_file_name:str):
     embedding_dict = {}
 
     for word in unique_word_dict.keys(): 
@@ -34,4 +43,4 @@ def plot_results(weights, unique_word_dict):
         plt.scatter(coord[0], coord[1])
         plt.annotate(word, (coord[0], coord[1]))
 
-    plt.show()
+    plt.savefig("logs/" + logger_file_name + ".png")
