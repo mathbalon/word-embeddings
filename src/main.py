@@ -1,20 +1,20 @@
 import sys
 import yaml
-import time
 
+from logger import init_logger_file
 from model import create_neural_network_model, plot_results
 from one_hot_matrices import create_one_hot_matrices
-from logger import init_logger_file
+from word_data_points import create_unique_word_dict, create_word_data_points
 
-from word_data_points import create_word_data_points, create_unique_word_dict
+file_name = sys.argv[1]
 
-with open("data/" + sys.argv[1], "r") as file:
+with open("data/" + file_name, "r") as file:
     text = file.readlines()
 
 with open("settings.yml", "r") as file:
     settings = yaml.load(file, Loader=yaml.FullLoader)
 
-logger_path = init_logger_file(settings)
+logger_path = init_logger_file(file_name, settings)
 
 word_pairs, all_words = create_word_data_points(text, settings["window"], logger_path)
 

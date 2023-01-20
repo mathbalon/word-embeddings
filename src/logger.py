@@ -23,7 +23,7 @@ def format_settings(settings:dict) -> str:
         settings_text += "  {}, {}\n".format(key, value)
     return settings_text
 
-def init_logger_file(settings:dict) -> str:
+def init_logger_file(file_name:str, settings:dict) -> str:
     now = datetime.now()
 
     logger_file_name = now.strftime("%d-%m-%Y--%H:%M:%S__") + str(now.timestamp())
@@ -34,7 +34,7 @@ def init_logger_file(settings:dict) -> str:
 
     experiment_date = "Data do experimento: {}".format(now.strftime("%d-%m-%Y %H:%M:%S"))
 
-    experiment_settings = """Configurações do experimento:\n\n{}\n\n""".format(format_settings(settings))
+    experiment_settings = """Arquivo: {}\nConfigurações do experimento:\n\n{}\n\n""".format(file_name, format_settings(settings))
 
     logger_file.write(experiment_date + 
     header_text + 
