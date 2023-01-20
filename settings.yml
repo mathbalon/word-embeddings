@@ -3,4 +3,4 @@ window: 2
 # Configurações do modelo
 embed_size: 2
 batch_size: 256
-epochs: 1000
+epochs: 400

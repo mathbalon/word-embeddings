@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 from logger import logger
 
-def create_neural_network_model(X:np.ndarray, Y:np.ndarray, settings:dict, logger_file_name:str):
+def create_neural_network_model(X:np.ndarray, Y:np.ndarray, settings:dict, logger_path:str):
     st = time.time()
 
     input_layer = tf.keras.Input(shape=(X.shape[1],))
@@ -24,11 +24,11 @@ def create_neural_network_model(X:np.ndarray, Y:np.ndarray, settings:dict, logge
 
     et = time.time()
     
-    logger(logger_file_name, "create_neural_network_model", et-st)
+    logger(logger_path, "create_neural_network_model", et-st)
 
     return model.get_weights()[0]
 
-def plot_results(weights, unique_word_dict:dict, logger_file_name:str):
+def plot_results(weights, unique_word_dict:dict, logger_path:str):
     embedding_dict = {}
 
     for word in unique_word_dict.keys(): 
@@ -43,4 +43,4 @@ def plot_results(weights, unique_word_dict:dict, logger_file_name:str):
         plt.scatter(coord[0], coord[1])
         plt.annotate(word, (coord[0], coord[1]))
 
-    plt.savefig("logs/" + logger_file_name + ".png")
+    plt.savefig(logger_path + "/plot.png")

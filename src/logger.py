@@ -1,3 +1,5 @@
+import os
+
 from datetime import datetime
 
 header_text = """
@@ -26,7 +28,9 @@ def init_logger_file(settings:dict) -> str:
 
     logger_file_name = now.strftime("%d-%m-%Y--%H:%M:%S__") + str(now.timestamp())
 
-    logger_file = open("logs/"+logger_file_name, "a")
+    os.makedirs("logs/"+logger_file_name)
+
+    logger_file = open("logs/"+logger_file_name+"/log", "w+")
 
     experiment_date = "Data do experimento: {}".format(now.strftime("%d-%m-%Y %H:%M:%S"))
 
@@ -40,9 +44,9 @@ def init_logger_file(settings:dict) -> str:
     
     logger_file.close()
 
-    return logger_file_name
+    return "logs/"+logger_file_name
 
-def logger(logger_file_name: str, function_name:str, time:float):
-    logger_file = open("logs/"+logger_file_name, "a")
+def logger(logger_path: str, function_name:str, time:float):
+    logger_file = open(logger_path+"/log", "a")
     logger_file.write("• {}: {} segundos\n".format(function_name, time))
     logger_file.close()

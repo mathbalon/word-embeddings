@@ -4,7 +4,7 @@ from typing import Tuple
 from preprocessing import text_preprocessing
 from logger import logger
 
-def create_word_data_points(text:list, window:int, logger_file_name:str) -> Tuple[list, list]:
+def create_word_data_points(text:list, window:int, logger_path:str) -> Tuple[list, list]:
     st = time.time()
 
     word_pairs = []
@@ -27,11 +27,11 @@ def create_word_data_points(text:list, window:int, logger_file_name:str) -> Tupl
     
     et = time.time()
 
-    logger(logger_file_name, "create_word_data_points", et-st)
+    logger(logger_path, "create_word_data_points", et-st)
 
     return word_pairs, all_words
 
-def create_unique_word_dict(words:list, logger_file_name:str) -> dict:
+def create_unique_word_dict(words:list, logger_path:str) -> dict:
     st = time.time()
 
     unique_words = sorted(list(set(words)))
@@ -44,6 +44,6 @@ def create_unique_word_dict(words:list, logger_file_name:str) -> dict:
 
     et = time.time()
     
-    logger(logger_file_name, "create_unique_word_dict", et-st)
+    logger(logger_path, "create_unique_word_dict", et-st)
 
     return words_dict

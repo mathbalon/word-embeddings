@@ -4,7 +4,7 @@ import numpy as np
 from typing import Tuple
 from logger import logger
 
-def create_one_hot_matrices(word_pairs:list, unique_word_dict:dict, logger_file_name:str) -> Tuple[np.ndarray, np.ndarray]:
+def create_one_hot_matrices(word_pairs:list, unique_word_dict:dict, logger_path:str) -> Tuple[np.ndarray, np.ndarray]:
     st = time.time()
 
     qty_words = len(unique_word_dict)
@@ -29,6 +29,6 @@ def create_one_hot_matrices(word_pairs:list, unique_word_dict:dict, logger_file_
 
     et = time.time()
     
-    logger(logger_file_name, "create_one_hot_matrices", et-st)
+    logger(logger_path, "create_one_hot_matrices", et-st)
     
     return X, Y
