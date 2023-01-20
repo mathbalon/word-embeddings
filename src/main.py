@@ -2,7 +2,7 @@ import sys
 import yaml
 
 from create_neural_network_model import create_neural_network_model, plot_results
-from create_one_hot_matrices import create_one_hot_matrices
+from one_hot_matrices import create_one_hot_matrices
 
 from word_data_points import create_word_data_points, create_unique_word_dict
 
