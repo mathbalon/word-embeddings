@@ -18,6 +18,6 @@ unique_word_dict = create_unique_word_dict(all_words)
 
 X, Y = create_one_hot_matrices(word_pairs, unique_word_dict)
 
-weights = create_neural_network_model(X, Y, settings["embed_size"])
+weights = create_neural_network_model(X, Y, settings)
 
 plot_results(weights, unique_word_dict)
