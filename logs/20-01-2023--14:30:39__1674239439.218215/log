@@ -1,0 +1,25 @@
+Data do experimento: 20-01-2023 14:30:39
+
+Autor: Matheus Balonecker
+
+Configurações da máquina:
+-- MacBook Pro Ventura 13.1
+-- Memória 16 GB
+-- Armazendamento 500 GB SSD
+-- Processador Apple M1 Pro 16 núcleos
+-- GPU Integrada
+
+Arquivo: the_future_king.txt
+Configurações do experimento:
+
+  window, 2
+  embed_size, 2
+  batch_size, 256
+  epochs, 8000
+
+
+Tempos de execução das funções:
+• create_word_data_points: 0.00043892860412597656 segundos
+• create_unique_word_dict: 9.059906005859375e-06 segundos
+• create_one_hot_matrices: 0.00013208389282226562 segundos
+• create_neural_network_model: 67.32614398002625 segundos
